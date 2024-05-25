@@ -46,9 +46,9 @@ Plugins I have created for Tdarr while learning JavaScript and TypeScript
   pass will be done
   
  WTF is a "moov atom"?
- > "MP4 videos contain a flag that tells the player when it can start, called the moov atom. When this flag is set at the end of a file, some players will wait until the entire video is downloaded before they start playing. To speed up this process, always look for a checkbox called ‘fast start’ or ‘web optimized’ or ‘streaming enabled’ and enable it when exporting a video." [^2]
+ > "MP4 videos contain a flag that tells the player when it can start, called the moov atom. When this flag is set at the end of a file, some players will wait until the entire video is downloaded before they start playing. To speed up this process, always look for a checkbox called ‘fast start’ or ‘web optimized’ or ‘streaming enabled’ and enable it when exporting a video." [^3]
 
-[^2]: https://code.pixplicity.com/ffmpeg/faststart/
+[^3]: https://code.pixplicity.com/ffmpeg/faststart/
 
 ## tools
 ### Notify Radarr or Sonarr to refresh by keyword
