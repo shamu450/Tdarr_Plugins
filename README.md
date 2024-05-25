@@ -6,14 +6,13 @@ Plugins I have created for Tdarr while learning JavaScript and TypeScript
   - Dropdown to select the video codec
   - Enter the codec tag name you would like to apply to the video codec
 
-### Set Codec Tag on HEVC to hvc1
-  * Will skip all non HEVC files and HEVC files that already have the hvc1 codec tag
+### Set Codec Tag to Apple HLS recommendation
+  * Sets the codec tag on 264, HEVC and Dolby Vision (soon) to the Apple HTTPS Live Streaming recommended codec tag of avc1, hvc1 or dvh1.
     
   Why change tag to hvc1?
-  > - It seems not every platform/decoder supports both tags
-  > - Apple QuickTime player on Mac only supports hvc1
-  > - Apple prefers hvc1 for HLS on Apple devices [^1]
-
+  Apple says:
+  > 1.10. You SHOULD use video formats in which the parameter sets are stored in the sample descriptions, rather than the samples. (That is, use 'avc1', 'hvc1', or 'dvh1' rather than 'avc3', 'hev1', or 'dvhe'.) [^1]
+  
   What is the difference between hvc1 and hev1 codec tags?
   > HEVC video can be muxed into fMP4 using different codec tags. According to 8.4.1 HEVC video stream definition 
     of ISO/IEC FDIS 14496-15:2019(E) there are hvc1 and hev1. [^2]
