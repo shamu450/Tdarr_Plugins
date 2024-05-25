@@ -46,5 +46,35 @@ Plugins I have created for Tdarr while learning JavaScript and TypeScript
 
 ## tools
 ### Notify Radarr or Sonarr to refresh by keyword
-  - Choose a keyword to let Radarr and Sonarr know if the file is a movie or episode, default keywords: tmdbid tvdbid
-  - Plugin will find the keyword in the file name and try to contact the correct arr to refresh the item
+  - Let Radarr or Sonarr know if the file is a movie or episode by keywords, default keywords: tmdbid tvdbid
+  - arr to be used will be choosen based on the keyword
+  - Works similar to the original notify script, will contact the arr for the file ID and then send a request to 
+  refresh the item
+
+### Apply Radarr or Sonarr naming policy by keyword
+  - Let Radarr or Sonarr know if the file is a movie or episode by keywords, default keywords: tmdbid tvdbid
+  - arr to be used will be choosen based on the keyword
+  - Works similar to the original rename script, will contact the arr for the file ID and then send a request to rename 
+  the item
+
+### Notify Jellyfin to refresh library by keyword until I figure out how to update the item only
+  - Choose a keyword to let Jellyfin know if the file is a movie or episode, default keywords: tmdbid tvdbid
+  - Refresh movie, series or other libraries
+  - Enter multiple library ID's to update all libraries of the same content type
+  - Other content type libraries will be refreshed (if enabled) when no keyword is found in the file name
+
+#### Why create keyword arr plugins?
+I liked the original arr notify and naming plugins, but didn't like that I needed to put one for each arr. So I decided
+to try and make keyword based plugins modeled after the originals that would allow one plugin for both arrs. Since I 
+aleady have the arrs add the tmdbid and tvdbid keyword and ID number to the file names for the files they import, 
+choosing which arr to use to refresh or rename is pretty easy. As long as your keywords are unique then you should not 
+have any issues with the wrong arr finding a keyword in the file name.
+
+Here is an example of how my arrs name a file, this happens before the files reach Tdarr:
+ - i.am.movie.(2024).[tmdbid-967847].mp4
+ - i.am.episode.title.s01e04.[tvdbid-447119].mp4
+
+
+
+
+
