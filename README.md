@@ -6,7 +6,7 @@ Plugins I have created for Tdarr while learning JavaScript and TypeScript
   - Dropdown to select the video codec
   - Enter the codec tag name you would like to apply to the video codec
 
-### Set Codec Tag to Apple HLS recommendation
+### Set Video Codec Tag to Apple HLS recommendation
   * Sets the codec tag on 264, HEVC and Dolby Vision (soon) to the Apple HTTPS Live Streaming recommended codec tag of avc1, hvc1 or dvh1.
     
   Why change tag to hvc1?

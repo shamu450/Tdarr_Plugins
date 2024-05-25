@@ -6,8 +6,8 @@ import {
   
   /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
   const details = ():IpluginDetails => ({
-    name: 'Set Codec Tag To Apple HLS Recommendation',
-    description: `Replace codec tag on 264 and HEVC files, with new one based on Apple HLS recommendations for Apple devices. Per Apple: "You SHOULD use video formats in which the parameter sets are stored in the sample descriptions, rather than the samples. (That is, use 'avc1', 'hvc1', or 'dvh1' rather than 'avc3', 'hev1', or 'dvhe'.)" source: https://developer.apple.com/documentation/http-live-streaming/hls-authoring-specification-for-apple-devices #1.10`,
+    name: 'Set Video Codec Tag To Apple HLS Recommendation',
+    description: `Replace video codec tag on 264 and HEVC codecs, with one based on Apple HLS recommendations for Apple devices. Per Apple: "You SHOULD use video formats in which the parameter sets are stored in the sample descriptions, rather than the samples. (That is, use 'avc1', 'hvc1', or 'dvh1' rather than 'avc3', 'hev1', or 'dvhe'.)" source: https://developer.apple.com/documentation/http-live-streaming/hls-authoring-specification-for-apple-devices  #1.10`,
     style: {
         borderColor: '#6efefc',
     },
