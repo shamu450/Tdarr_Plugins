@@ -2,39 +2,26 @@
 Plugins I have created for Tdarr while learning JavaScript and TypeScript
 
 ## ffmpegCommands
-### Set Codec Tag on video codec by keyword
-  - Dropdown to select the video codec
-  - Enter the codec tag name you would like to apply to the video codec
-
 ### Set Video Codec Tag to Apple HLS recommendation
-  * Sets the codec tag on 264, HEVC and Dolby Vision (soon) to the Apple HTTPS Live Streaming recommended codec tag of avc1, hvc1 or dvh1.
+Sets the codec tag on 264 and 265 files to the Apple HTTPS Live Streaming (HLS) recommended codec tag of avc1, hvc1 or dvh1.
+
+| Codec | Changed to | Description |
+|:---:|:---:|:---:|
+| avc3 | avc1 | 264 w/o Dolby Vision |
+| hev1 | hvc1 | HEVC w/o Dolby Vision |
+| dvhe | dvh1 | HEVC w/ Dolby Vision |
     
-  Why change tag to hvc1?
-  Apple says:
-  > 1.10. You SHOULD use video formats in which the parameter sets are stored in the sample descriptions, rather than the samples. (That is, use 'avc1', 'hvc1', or 'dvh1' rather than 'avc3', 'hev1', or 'dvhe'.) [^1]
-  
-  What is the difference between hvc1 and hev1 codec tags?
-  > HEVC video can be muxed into fMP4 using different codec tags. According to 8.4.1 HEVC video stream definition 
-    of ISO/IEC FDIS 14496-15:2019(E) there are hvc1 and hev1. [^2]
+Why change tag the codec tag?
+For better Apple device compatiblity Apple says:
+> 1.10. You SHOULD use video formats in which the parameter sets are stored in the sample descriptions, rather than the samples. (That is, use 'avc1', 'hvc1', or 'dvh1' rather than 'avc3', 'hev1', or 'dvhe'.) [^1]
 
-  > It’s related to the placement of parameter sets (SPS, PPS, VPS) in the fMP4 file. [^2]
+> Example:
+> - hvc1 parameter sets are stored out-of-band in the sample entry (i.e. below the Sample Description Box ( stsd ) box)
+> - hev1 parameter sets are stored out-of-band in the sample entry and/or in-band in the samples (i.e. SPS/PPS/VPS NAL units in the bitstream/ mdat box) [^2]
 
-  > Section 8.3.2 of ISO/IEC FDIS 14496-15:2019(E) states:
-    Parameter sets: A parameter set to be used in a picture must be sent prior to the sample containing that picture 
-    or in the sample for that picture. For a video stream that a particular sample entry applies to, the video 
-    parameter set, sequence parameter sets, and picture parameter sets, shall be stored only in the sample entry when 
-    the sample entry name is ‘hvc1’, and may be stored in the sample entry and the samples when the sample entry name 
-    is ‘hev1’. [^2]
-   
-  > Conclusively:
-  > - hvc1 parameter sets are stored out-of-band in the sample entry (i.e. below the Sample Description Box ( stsd ) box)
-  > - hev1 parameter sets are stored out-of-band in the sample entry and/or in-band in the samples 
-  (i.e. SPS/PPS/VPS NAL units in the bitstream/ mdat box) [^2]
-
-[^1]: https://developer.apple.com/documentation/http-live-streaming/hls-authoring-specification-for-apple-devices#2969487
-
-[^2]: https://community.bitmovin.com/t/whats-the-difference-between-hvc1-and-hev1-hevc-codec-tags-for-fmp4/101
-
+So the tag will determine where parameter sets are stored, in the sample entry or in the samples. Does this matter at the end of the line when watching a video?
+Only if it prevents you from playing it on the device. So might as well set the codec tag to the one that is compatible
+with more devices. Ofc if your files won't be played on Apple devices you don't have to make any changes to your files.
 
 ### Set Faststart Flag on MOV family containers
 * Set the faststart flag on MP4, M4V or MOV; This will move the moov atom to the front of the file
@@ -78,3 +65,9 @@ with the wrong arr finding a keyword in the file name.
 Here is an example of how my arrs name a file, this happens before the files reach Tdarr:
  - i.am.movie.(2024).[tmdbid-967847].mp4
  - i.am.episode.title.s01e04.[tvdbid-447119].mp4
+
+<!-- source links -->
+
+[^1]: https://developer.apple.com/documentation/http-live-streaming/hls-authoring-specification-for-apple-devices#2969487
+
+[^2]: https://community.bitmovin.com/t/whats-the-difference-between-hvc1-and-hev1-hevc-codec-tags-for-fmp4/101
