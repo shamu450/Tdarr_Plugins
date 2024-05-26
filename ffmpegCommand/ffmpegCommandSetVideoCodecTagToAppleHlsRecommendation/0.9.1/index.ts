@@ -58,7 +58,7 @@ import {
     for (let i = 0; i < mediaInfoTrackLength; i++) { // loop mediaInfo track objects so we can find track/key 0
         let tracks = args.inputFileObj.mediaInfo.track[i]; // set tracks to the current key # 
         if (i === 1 && tracks.HDR_Format.toLowerCase().includes('dolby vision')) { // if i is track/key 1 and HDR_Format includes dolby vision
-            args.jobLog("\u2714 File is has dolby vision, checking for dvav or dvh1 codec tags ...");
+            args.jobLog("\u2714 File is has dolby vision, checking codec tag ...");
             hasDv = true;
         } else if (i === 1 && !(tracks.HDR_Format.toLowerCase().includes('dolby vision'))) { // if i is track/key 1 and HDR_Format does not include dolby vision
           args.jobLog("File does not have dolby vision, continuing file check ...");
