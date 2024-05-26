@@ -7,7 +7,7 @@ Sets the codec tag on 264 and 265 codecs to the Apple HTTPS Live Streaming (HLS)
 Plugin will replace the current tag so if the tag is empty or "[0][0][0][0]" those will be replaced with the Apple HLS 
 recommended for the files codec.
 
-| File Codec | Tag Changed to | Description |
+| Codec | Tag Changed to | Description |
 |:---:|:---:|:---:|
 | 264 | avc1 | w/o Dolby Vision |
 | 265 | hvc1 | w/o Dolby Vision |
