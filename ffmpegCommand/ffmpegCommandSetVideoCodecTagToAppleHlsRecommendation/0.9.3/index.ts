@@ -2,12 +2,11 @@ import {
     IpluginDetails,
     IpluginInputArgs,
     IpluginOutputArgs,
-  } from '../../../../FlowHelpers/1.0.0/interfaces/interfaces';
-  
+  } from '../../../../FlowHelpers/1.0.0/interfaces/interfaces';  
 /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 const details = ():IpluginDetails => ({
   name: 'Set Video Codec Tag To Apple HLS Recommendation',
-  description: `Replaces the video codec tag with the one based on Apple HLS recommendations for Apple devices. Per Apple: "1.10 You SHOULD use video formats in which the parameter sets are stored in the sample descriptions, rather than the samples. (That is, use 'avc1', 'hvc1', or 'dvh1' rather than 'avc3', 'hev1', or 'dvhe'.)" source: https://developer.apple.com/documentation/http-live-streaming/hls-authoring-specification-for-apple-devices`,
+  description: `Replace the video codec tag with the Apple HLS recommended codec tag for better Apple device compatibility. Per Apple: "1.10 You SHOULD use video formats in which the parameter sets are stored in the sample descriptions, rather than the samples. (That is, use 'avc1', 'hvc1', or 'dvh1' rather than 'avc3', 'hev1', or 'dvhe'.)" source: https://developer.apple.com/documentation/http-live-streaming/hls-authoring-specification-for-apple-devices`,
   style: {
       borderColor: '#6efefc',
   },
@@ -24,8 +23,7 @@ const details = ():IpluginDetails => ({
           tooltip: 'Continue to next plugin.',
       },
   ],
-});
-  
+});  
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const plugin = (args:IpluginInputArgs):IpluginOutputArgs => {
   const lib = require('../../../../../methods/lib')();
@@ -35,9 +33,8 @@ const plugin = (args:IpluginInputArgs):IpluginOutputArgs => {
   trackLength = args.inputFileObj.mediaInfo.track.length;
   let changedCodecTag = false, isDv = false, isHdr = false, streamCodecName = '', streamCodecTagString = '';
   //
-  // check file for HDR
-  // find file codec and codec tag
-  // setup vairables
+  // HDR check
+  // get/set codec and codec tag vairables
   //
   if (Array.isArray(args?.variables?.ffmpegCommand?.streams)) {
     for (let i = 0; i < streamsLength; i += 1) {
@@ -63,7 +60,7 @@ const plugin = (args:IpluginInputArgs):IpluginOutputArgs => {
     throw new Error('File has no stream data');
   }
   //
-  // if HDR, check for Dolby Vision
+  // Dolby Vision check only if HDR
   //
   if (isHdr === true) {
     args.jobLog(`\u2714 File codec is ${streamCodecName} and has HDR, checking for Dolby Vision ...`);
@@ -88,7 +85,7 @@ const plugin = (args:IpluginInputArgs):IpluginOutputArgs => {
   if (isDv === false) {
     if (streamCodecName === 'h264' && streamCodecTagString === 'avc1') {
       args.jobLog(`\u2714 File already has avc1 codec tag`);
-    } else if (streamCodecName === 'h264' && streamCodecTagString !== 'avc1') {
+    } else if (streamCodecName === 'h264' && (streamCodecTagString !== 'avc1')) {
       args.jobLog(`\u2716 File has ${streamCodecTagString} as codec tag ...`);
       args.jobLog(`\u2714 Setting codec tag to avc1`);
       args.variables.ffmpegCommand.overallOuputArguments.push('-tag:v', 'avc1');
