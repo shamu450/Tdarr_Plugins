@@ -3,15 +3,15 @@ Plugins I have created for Tdarr while learning JavaScript and TypeScript
 
 ## ffmpegCommands
 ### Set Video Codec Tag to Apple HLS recommendation
-Sets the codec tag on 264 and 265 codecs to the Apple HTTPS Live Streaming (HLS) recommended codec tag of avc1, hvc1 or dvh1.
-Plugin will replace the current tag so if the tag is empty or "[0][0][0][0]" those will be replaced with the Apple HLS 
-recommended for the files codec.
+Sets the codec tag on 264 and 265 codecs to the Apple HTTPS Live Streaming (HLS) recommended codec tag of avc1, hvc1 or 
+if the file has Dolby Vision to dvh1. Plugin will replace the current tag, so if the tag is empty or "[0][0][0][0]" 
+those will be replaced with the Apple HLS recommended for the files codec.
 
-| Codec | Tag Changed to | Description |
-|:---:|:---:|:---:|
-| 264 | avc1 | w/o Dolby Vision |
-| 265 | hvc1 | w/o Dolby Vision |
-| 265 HDR DV | dvh1 | w/ Dolby Vision |
+| Codec | Tag | Changed To | Description |
+|:---:|:---:|:---:|:---|
+| 264 | avc3 | avc1 | 264 codec without Dolby Vision |
+| 265 | hev1 | hvc1 | 265 codec without Dolby Vision |
+| 265 HDR DV | dvhe | dvh1 | 265 codec with Dolby Vision |
 <!--| 264 HDR | dva1 | w/ Dolby Vision |-->
     
 Why change tag the codec tag?
