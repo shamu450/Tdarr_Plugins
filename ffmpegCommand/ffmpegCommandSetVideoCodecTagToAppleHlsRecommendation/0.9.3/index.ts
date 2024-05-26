@@ -34,7 +34,7 @@ const plugin = (args:IpluginInputArgs):IpluginOutputArgs => {
   let changedCodecTag = false, isDv = false, isHdr = false, streamCodecName = '', streamCodecTagString = '';
   //
   // HDR check
-  // get/set codec and codec tag vairables
+  // get/set codec and codec tag variables
   //
   if (Array.isArray(args?.variables?.ffmpegCommand?.streams)) {
     for (let i = 0; i < streamsLength; i += 1) {

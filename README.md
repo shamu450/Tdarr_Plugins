@@ -1,5 +1,5 @@
 # Tdarr_Plugins
-Plugins I have created for Tdarr while learning JavaScript and TypeScript
+Plugins for Tdarr, made while I learn JavaScript and TypeScript
 
 ## ffmpegCommands
 ### Set Video Codec Tag to Apple HLS recommendation
@@ -13,8 +13,6 @@ if the file has Dolby Vision to dvh1.
 | 265 HDR DV | dvhe | dvh1 | 265 codec with Dolby Vision |
 <!--| 264 HDR | dva1 | w/ Dolby Vision |-->
     
-Why change tag the codec tag?
-
 For better Apple device compatiblity. Apple says:
 > 1.10. You SHOULD use video formats in which the parameter sets are stored in the sample descriptions, rather than the samples. (That is, use 'avc1', 'hvc1', or 'dvh1' rather than 'avc3', 'hev1', or 'dvhe'.) [^1]
 
@@ -22,9 +20,8 @@ For better Apple device compatiblity. Apple says:
 > - hvc1 parameter sets are stored out-of-band in the sample entry (i.e. below the Sample Description Box ( stsd ) box)
 > - hev1 parameter sets are stored out-of-band in the sample entry and/or in-band in the samples (i.e. SPS/PPS/VPS NAL units in the bitstream/ mdat box)
 
-So the tag will determine where parameter sets are stored, in the sample entry or in the samples. Does this matter at 
-the end of the line when watching a video? Only if it prevents you from playing it on the device. So might as well set 
-the codec tag to the one that is compatible with more devices.
+Does this matter at the end of the line when watching a video? Only if it prevents you from playing it on the device. 
+So imo, might as well set the codec tag to the one that is compatible with more devices.
 
 ### Set Faststart Flag on MOV family containers
 * Set the faststart flag on MP4, M4V or MOV; This will move the moov atom to the front of the file
@@ -36,8 +33,6 @@ the codec tag to the one that is compatible with more devices.
   
  WTF is a "moov atom"?
  > "MP4 videos contain a flag that tells the player when it can start, called the moov atom. When this flag is set at the end of a file, some players will wait until the entire video is downloaded before they start playing. To speed up this process, always look for a checkbox called ‘fast start’ or ‘web optimized’ or ‘streaming enabled’ and enable it when exporting a video." [^3]
-
-[^3]: https://code.pixplicity.com/ffmpeg/faststart/
 
 ## tools
 ### Notify Radarr or Sonarr to refresh by keyword
@@ -74,3 +69,5 @@ Here is an example of how my arrs name a file, this happens before the files rea
 [^1]: https://developer.apple.com/documentation/http-live-streaming/hls-authoring-specification-for-apple-devices#2969487
 
 [^2]: https://community.bitmovin.com/t/whats-the-difference-between-hvc1-and-hev1-hevc-codec-tags-for-fmp4/101
+
+[^3]: https://code.pixplicity.com/ffmpeg/faststart/
