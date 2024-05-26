@@ -3,25 +3,29 @@ Plugins I have created for Tdarr while learning JavaScript and TypeScript
 
 ## ffmpegCommands
 ### Set Video Codec Tag to Apple HLS recommendation
-Sets the codec tag on 264 and 265 files to the Apple HTTPS Live Streaming (HLS) recommended codec tag of avc1, hvc1 or dvh1.
+Sets the codec tag on 264 and 265 codecs to the Apple HTTPS Live Streaming (HLS) recommended codec tag of avc1, hvc1 or dvh1.
+Plugin will replace the current tag so if the tag is empty or "[0][0][0][0]" those will be replaced with the Apple HLS 
+recommended for the files codec.
 
-| Codec | Changed to | Description |
+| File Codec | Tag Changed to | Description |
 |:---:|:---:|:---:|
-| avc3 | avc1 | 264 w/o Dolby Vision |
-| hev1 | hvc1 | HEVC w/o Dolby Vision |
-| dvhe | dvh1 | HEVC w/ Dolby Vision |
+| 264 | avc1 | w/o Dolby Vision |
+| 265 | hvc1 | w/o Dolby Vision |
+| 265 HDR DV | dvh1 | w/ Dolby Vision |
+<!--| 264 HDR | dva1 | w/ Dolby Vision |-->
     
 Why change tag the codec tag?
-For better Apple device compatiblity Apple says:
+
+For better Apple device compatiblity. Apple says:
 > 1.10. You SHOULD use video formats in which the parameter sets are stored in the sample descriptions, rather than the samples. (That is, use 'avc1', 'hvc1', or 'dvh1' rather than 'avc3', 'hev1', or 'dvhe'.) [^1]
 
-> Example:
+> Example: [^2]
 > - hvc1 parameter sets are stored out-of-band in the sample entry (i.e. below the Sample Description Box ( stsd ) box)
-> - hev1 parameter sets are stored out-of-band in the sample entry and/or in-band in the samples (i.e. SPS/PPS/VPS NAL units in the bitstream/ mdat box) [^2]
+> - hev1 parameter sets are stored out-of-band in the sample entry and/or in-band in the samples (i.e. SPS/PPS/VPS NAL units in the bitstream/ mdat box)
 
-So the tag will determine where parameter sets are stored, in the sample entry or in the samples. Does this matter at the end of the line when watching a video?
-Only if it prevents you from playing it on the device. So might as well set the codec tag to the one that is compatible
-with more devices. Ofc if your files won't be played on Apple devices you don't have to make any changes to your files.
+So the tag will determine where parameter sets are stored, in the sample entry or in the samples. Does this matter at 
+the end of the line when watching a video? Only if it prevents you from playing it on the device. So might as well set 
+the codec tag to the one that is compatible with more devices.
 
 ### Set Faststart Flag on MOV family containers
 * Set the faststart flag on MP4, M4V or MOV; This will move the moov atom to the front of the file
