@@ -4,8 +4,7 @@ Plugins I have created for Tdarr while learning JavaScript and TypeScript
 ## ffmpegCommands
 ### Set Video Codec Tag to Apple HLS recommendation
 Sets the codec tag on 264 and 265 codecs to the Apple HTTPS Live Streaming (HLS) recommended codec tag of avc1, hvc1 or 
-if the file has Dolby Vision to dvh1. Plugin will replace the current tag, so if the tag is empty or "[0][0][0][0]" 
-those will be replaced with the Apple HLS recommended for the files codec.
+if the file has Dolby Vision to dvh1.
 
 | Codec | Tag | Changed To | Description |
 |:---:|:---:|:---:|:---|
