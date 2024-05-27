@@ -7,7 +7,7 @@ Sets the codec tag on 264/265 codec files to the Apple HTTPS Live Streaming (HLS
 compatibility.
 
 | Codec | Codec Tag Changed To | Description |
-|:---:|:---:|:---:|:---|
+|:---:|:---:|:---:|
 | 264 | avc1 | no Dolby Vision |
 | 265 | hvc1 | no Dolby Vision |
 | 264 HDR DV | dva1 | has Dolby Vision |
