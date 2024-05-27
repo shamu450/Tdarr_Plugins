@@ -60,7 +60,7 @@ const plugin = (args:IpluginInputArgs):IpluginOutputArgs => {
     throw new Error('File has no stream data');
   }
   //
-  // Dolby Vision check only if HDR
+  // if HDR, Dolby Vision check
   //
   if (isHdr === true) {
     args.jobLog(`\u2714 File codec is ${streamCodecName} and has HDR, checking for Dolby Vision ...`);
@@ -80,7 +80,7 @@ const plugin = (args:IpluginInputArgs):IpluginOutputArgs => {
     args.jobLog(`Skipping Dolby Vision check. Verifying codec tag ...`);
   }
   //
-  // replace codec tags, no DV
+  // no DV, replace codec tags
   //
   if (isDv === false) {
     if (streamCodecName === 'h264' && streamCodecTagString === 'avc1') {
@@ -100,7 +100,7 @@ const plugin = (args:IpluginInputArgs):IpluginOutputArgs => {
     }
   }
   //
-  // replace codec tags, has DV
+  // has DV, replace codec tags
   //
   if (isDv === true) {
     if (streamCodecName === 'hevc' && streamCodecTagString === 'dvh1') {

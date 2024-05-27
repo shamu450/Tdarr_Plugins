@@ -169,7 +169,7 @@ const plugin = async (args: IpluginInputArgs): Promise<IpluginOutputArgs> => {
     //
     if (keywordFound === true) {  
         args.jobLog(`\u2714 Found keyword "${keyword}" in the file name ...`);
-        args.jobLog(`Treating file as a ${fileType}, continuing with ${arrCapped}`);
+        args.jobLog(`Treating file as a ${fileType}, checking ${arrCapped} configuration ...`);
     }
     //
     // check if arr is enabled for file content type
@@ -206,7 +206,7 @@ const plugin = async (args: IpluginInputArgs): Promise<IpluginOutputArgs> => {
                 host = radarr_host; // generic host variable to use in request header
                 itemIdsType = 'movieIds'; // generic variable to use in POST reuqest
                 refreshName = 'RefreshMovie'; // generic variable to use in POST reuqest
-                args.jobLog(`\u2714 Radarr api key is not empty, continuing with plugin ...`);
+                args.jobLog(`\u2714 Radarr api key is not empty`);
             } else { // api key input is empty
                 args.jobLog(`\u2716\u2716\u2716 Radarr api key is empty`);
                 args.jobLog(`Check your configuration`);
@@ -218,7 +218,7 @@ const plugin = async (args: IpluginInputArgs): Promise<IpluginOutputArgs> => {
                 host = sonarr_host; // generic host variable to use in request header
                 itemIdsType = 'seriesIds'; // generic variable to use in POST reuqest
                 refreshName = 'RefreshSeries'; // generic variable to use in POST reuqest
-                args.jobLog(`\u2714 Sonarr api key is not empty, continuing with plugin ...`);
+                args.jobLog(`\u2714 Sonarr api key is not empty`);
             } else { // api key input is empty
                 args.jobLog(`\u2716\u2716\u2716 Sonarr api key is empty`);
                 args.jobLog(`Check your configuration`);
