@@ -2,16 +2,19 @@
 Plugins for Tdarr, made while I learn JavaScript and TypeScript
 
 ## ffmpegCommands
-### Set Video Codec Tag to Apple HLS recommendation
-Sets the codec tag on 264 and 265 codecs to the Apple HTTPS Live Streaming (HLS) recommended codec tag of avc1, hvc1 or 
-if the file has Dolby Vision to dvh1.
+### Set Video Codec Tag to Apple HLS recommended
+Sets the codec tag on 264/265 codec files to the Apple HTTPS Live Streaming (HLS) recommended for better Apple device 
+compatibility.
 
-| Codec | Tag | Changed To | Description |
+| Codec | Codec Tag Changed To | Description |
 |:---:|:---:|:---:|:---|
-| 264 | avc3 | avc1 | 264 codec without Dolby Vision |
-| 265 | hev1 | hvc1 | 265 codec without Dolby Vision |
-| 265 HDR DV | dvhe | dvh1 | 265 codec with Dolby Vision |
-<!--| 264 HDR | dva1 | w/ Dolby Vision |-->
+| 264 | avc1 | no Dolby Vision |
+| 265 | hvc1 | no Dolby Vision |
+| 264 HDR DV | dva1 | has Dolby Vision |
+| 265 HDR DV | dvh1 | has Dolby Vision |
+
+<!-- DV 264 codec tag information taken from DolbyVisionProfilsLevels.pdf sectionn 2.1.2 Dolby Vision profile strings-->
+<!-- https://dolby.my.salesforce.com/sfc/p/700000009YuG/a/4u000000l6G4/4R18riPaaW3gxpVx7XwyQLdEITLFjB.w.Si0LoQR5j8 -->
     
 For better Apple device compatiblity. Apple says:
 > 1.10. You SHOULD use video formats in which the parameter sets are stored in the sample descriptions, rather than the samples. (That is, use 'avc1', 'hvc1', or 'dvh1' rather than 'avc3', 'hev1', or 'dvhe'.) [^1]
@@ -19,9 +22,6 @@ For better Apple device compatiblity. Apple says:
 > Example: [^2]
 > - hvc1 parameter sets are stored out-of-band in the sample entry (i.e. below the Sample Description Box ( stsd ) box)
 > - hev1 parameter sets are stored out-of-band in the sample entry and/or in-band in the samples (i.e. SPS/PPS/VPS NAL units in the bitstream/ mdat box)
-
-Does this matter at the end of the line when watching a video? Only if it prevents you from playing it on the device. 
-So imo, might as well set the codec tag to the one that is compatible with more devices.
 
 ### Set Faststart Flag on MOV family containers
 * Set the faststart flag on MP4, M4V or MOV; This will move the moov atom to the front of the file

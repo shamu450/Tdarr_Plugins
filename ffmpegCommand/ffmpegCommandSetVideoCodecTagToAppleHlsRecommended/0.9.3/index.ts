@@ -6,7 +6,7 @@ import {
 /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 const details = ():IpluginDetails => ({
   name: 'Set Video Codec Tag To Apple HLS Recommended',
-  description: `Set the video codec tag to the Apple HLS recommended codec tag for better Apple device compatibility. File is checked for HDR, if found, checked for Dolby Vision, then codec tag will be set to dvh1/dva1 for Dolby Vision 265/264 files or avc1/hvc1 for 264/265 for files without Dolby Vision. Per Apple: "1.10 You SHOULD use video formats in which the parameter sets are stored in the sample descriptions, rather than the samples. (That is, use 'avc1', 'hvc1', or 'dvh1' rather than 'avc3', 'hev1', or 'dvhe'.)" source: https://developer.apple.com/documentation/http-live-streaming/hls-authoring-specification-for-apple-devices`,
+  description: `Set the video codec tag on 264/265 codec files to the Apple HLS recommended codec tag for better Apple device compatibility. File is checked for HDR, if found, checked for Dolby Vision, then codec tag will be set based on 264/265 codec to dva1/dvh1 for Dolby Vision files or avc1/hvc1 for files without Dolby Vision. Per Apple: "1.10 You SHOULD use video formats in which the parameter sets are stored in the sample descriptions, rather than the samples. (That is, use 'avc1', 'hvc1', or 'dvh1' rather than 'avc3', 'hev1', or 'dvhe'.)" source: https://developer.apple.com/documentation/http-live-streaming/hls-authoring-specification-for-apple-devices`,
   style: {
       borderColor: '#6efefc',
   },
