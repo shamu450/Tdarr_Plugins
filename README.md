@@ -6,12 +6,12 @@ Plugins for Tdarr, made while I learn JavaScript and TypeScript
 Sets the codec tag on 264/265 codec files to the Apple HTTPS Live Streaming (HLS) recommended for better Apple device 
 compatibility.
 
-| Codec | Codec Tag Changed To | Description |
+| Codec | Dolby Vision | Codec Tag Changed To |
 |:---:|:---:|:---:|
-| 264 | avc1 | no Dolby Vision |
-| 265 | hvc1 | no Dolby Vision |
-| 264 | dva1 | has Dolby Vision |
-| 265 | dvh1 | has Dolby Vision |
+| 264 | No | avc1 |
+| 265 | No | hvc1 |
+| 264 | Yes | dva1 |
+| 265 | Yes | dvh1 |
 
 <!-- DV 264 codec tag information taken from DolbyVisionProfilsLevels.pdf sectionn 2.1.2 Dolby Vision profile strings-->
 <!-- https://dolby.my.salesforce.com/sfc/p/700000009YuG/a/4u000000l6G4/4R18riPaaW3gxpVx7XwyQLdEITLFjB.w.Si0LoQR5j8 -->
