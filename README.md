@@ -3,7 +3,7 @@ Plugins for Tdarr, made while I learn JavaScript and TypeScript
 
 ## ffmpegCommands
 ### Set Video Codec Tag to Apple HLS recommended
-Sets the codec tag on 264/265 codec files to the Apple HTTPS Live Streaming (HLS) recommended for better Apple device 
+Sets the codec tag on 264/265 codec files to the Apple HTTPS Live Streaming (HLS) recommendation for better Apple device 
 compatibility.
 
 | Codec | Dolby Vision | Codec Tag Changed To |
